@@ -54,7 +54,7 @@ namespace VendasAPI.Infra.Repositório
 
         public ValidateResult PutCliente(Cliente cliente)
         {
-            var encontraClienteBanco = 
+            var encontraClienteBanco = outoutotu;
         }
 
         public ValidateResult RemoveCliente(string documento)
