@@ -5,7 +5,7 @@ using VendasAPI.Domínio.Entidades;
 using VendasAPI.Infra.Context;
 
 namespace VendasAPI.Infra.Repositório
-{
+{//Easter EGG
     public class ClienteRepositorio : BaseValidate, IInterfaceGeral
     {
         private VendaContext context = new VendaContext();
