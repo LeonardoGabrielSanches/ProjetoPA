@@ -5,7 +5,7 @@ using VendasAPI.Domínio.Entidades;
 using VendasAPI.Infra.Context;
 
 namespace VendasAPI.Infra.Repositório
-{//Easter EGG
+{
     public class ClienteRepositorio : BaseValidate, IInterfaceGeral
     {
         private VendaContext context = new VendaContext();
@@ -54,7 +54,18 @@ namespace VendasAPI.Infra.Repositório
 
         public ValidateResult PutCliente(Cliente cliente)
         {
-            var encontraClienteBanco = outoutotu;
+            try
+            {
+                context.Cliente.Attach(cliente).State = EntityState.Modified;
+                context.Cliente.Update(cliente);
+                context.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+                Result.MensagemErro = $"{ex.Message}";
+            }
+
+            return Result;
         }
 
         public ValidateResult RemoveCliente(string documento)
