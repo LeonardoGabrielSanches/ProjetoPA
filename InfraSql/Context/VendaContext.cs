@@ -18,6 +18,7 @@ namespace VendasAPI.Infra.Context
         {
             if (!builder.IsConfigured)
                 builder.UseSqlServer("Data Source=DESKTOP-DGFAPKG\\SQLEXPRESS;Initial Catalog=BancoDeVendas;persist security info=True;user id=sa;Password=saadmin");
+            //Leonardo : "Data Source=DESKTOP-DGFAPKG\\SQLEXPRESS;Initial Catalog=BancoDeVendas;persist security info=True;user id=sa;Password=saadmin"
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
