@@ -35,7 +35,7 @@ namespace InfraSql.Repositório
 
                 var itemBanco = GetItemBanco(item.CodigoEstoque);
 
-                if(itemBanco == null)
+                if(itemBanco != null)
                 {
                     validateResult.MensagemErro = $"Item já existente no banco";
                     return validateResult;

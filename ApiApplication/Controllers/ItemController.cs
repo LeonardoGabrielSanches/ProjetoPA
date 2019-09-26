@@ -7,35 +7,36 @@ namespace VendasAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VendaController : ControllerBase
+    public class ItemController : ControllerBase
     {
-        private readonly IInterfaceGeral cliente;
+        private readonly IInterfaceItem item;
 
-        public VendaController(IInterfaceGeral geral)
+        public ItemController(IInterfaceItem iItem)
         {
-            cliente = geral;
+            item = iItem;
         }
 
         // GET: api/ControleVenda/5
         [HttpGet]
-        public IActionResult GetByDocument(string documento)
+        public IActionResult GetByNumeroEstoque(int numeroEstoque)
         {
-            var clienteConsulta = cliente.GetCliente(documento);
-            if (cliente == null)
+            var itemBanco = item.GetItem(numeroEstoque);
+            if (itemBanco == null)
                 return NoContent();
             else
-                return Ok(clienteConsulta);
+                return Ok(itemBanco);
         }
 
         // POST: api/ControleVenda
         [HttpPost]
-        public IActionResult Post(string documento)
+        public IActionResult Post(Item itemAPI)
         {
-            var validateResult = cliente.PostCliente(documento);
+            var validateResult = item.PostItem(itemAPI);
+
             if (!validateResult.Isvalid)
                 return BadRequest(validateResult.MensagemErro);
 
-            return Ok("Cliente cadastrado com sucesso");
+            return Ok("Item cadastrado com sucesso");
         }
 
         // PUT: api/ControleVenda/5
@@ -46,11 +47,12 @@ namespace VendasAPI.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{documento}")]
-        public IActionResult Delete(string documento)
+        public IActionResult Delete(int numeroDocumento)
         {
             try
             {
-                var validateResult = cliente.RemoveCliente(documento);
+                var validateResult = item.RemoveItem(numeroDocumento);
+
                 if (!validateResult.Isvalid)
                     return BadRequest(validateResult.MensagemErro);
 
