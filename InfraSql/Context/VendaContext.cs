@@ -17,7 +17,7 @@ namespace VendasAPI.Infra.Context
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             if (!builder.IsConfigured)
-                builder.UseSqlServer("Data Source=DESKTOP-DGFAPKG\\SQLEXPRESS;Initial Catalog=BancoDeVendas;persist security info=True;user id=sa;Password=saadmin");
+                builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;DataBase=BancoDeVendas;persist security info=True");
             //Leonardo : "Data Source=DESKTOP-DGFAPKG\\SQLEXPRESS;Initial Catalog=BancoDeVendas;persist security info=True;user id=sa;Password=saadmin"
         }
 

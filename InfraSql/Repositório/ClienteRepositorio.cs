@@ -5,6 +5,7 @@ using VendasAPI.Domínio.Entidades;
 using VendasAPI.Infra.Context;
 
 namespace VendasAPI.Infra.Repositório
+    //EASTER EGG
 {
     public class ClienteRepositorio : BaseValidate, IInterfaceGeral
     {
@@ -37,7 +38,7 @@ namespace VendasAPI.Infra.Repositório
                     Result.MensagemErro = "Cliente já existente no banco de dados";
                     return Result;
                 }
-
+                //Tipo CNPJ 
                 var cliente = CrossCutting.APIExterna.APIReceitaCNPJ(documento);
 
                 context.Cliente.Add(cliente);
