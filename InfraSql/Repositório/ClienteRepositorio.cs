@@ -5,7 +5,7 @@ using VendasAPI.Domínio.Entidades;
 using VendasAPI.Infra.Context;
 
 namespace VendasAPI.Infra.Repositório
-    //EASTER EGG
+//EASTER EGG
 {
     public class ClienteRepositorio : BaseValidate, IInterfaceGeral
     {
@@ -32,6 +32,8 @@ namespace VendasAPI.Infra.Repositório
         {
             try
             {
+                ValidateResult validateResult = new ValidateResult();
+
                 var existeNoBanco = EncontraCliente(documento);
                 if (existeNoBanco != null)
                 {
@@ -41,11 +43,26 @@ namespace VendasAPI.Infra.Repositório
                 //Tipo CNPJ 
                 var cliente = CrossCutting.APIExterna.APIReceitaCNPJ(documento);
 
+                if (cliente == null)
+                {
+                    Result.MensagemErro = "Cliente não encontrado";
+                    return Result;
+                }
+
+                validateResult = cliente.ValidacoesCNPJ();
+
+                if (!validateResult.Isvalid)
+                    return validateResult;
+
+               
+
+
+
                 context.Cliente.Add(cliente);
 
                 context.SaveChanges();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 throw;
             }

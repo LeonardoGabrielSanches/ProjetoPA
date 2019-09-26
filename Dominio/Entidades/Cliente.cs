@@ -1,4 +1,6 @@
 ﻿//RETIRAR O COMENTÁRIO APÓS FAZER ALTERAÇÕES
+using System;
+
 namespace VendasAPI.Domínio.Entidades
 {
     public class Cliente
@@ -14,5 +16,29 @@ namespace VendasAPI.Domínio.Entidades
         public string Numero { get; set; }
         public string email { get; set; }
         public string UF { get; set; }
+
+
+
+        public ValidateResult ValidacoesCNPJ()
+        {
+            ValidateResult validateResult = new ValidateResult();
+
+            VerificaSeCampoDocumentoPreenchido(validateResult);
+
+            if (!validateResult.Isvalid)
+                return validateResult;
+
+            
+
+
+            return validateResult;
+
+        }
+
+        private void VerificaSeCampoDocumentoPreenchido(ValidateResult validateResult)
+        {
+            if (string.IsNullOrEmpty(NumeroDocumento))
+                validateResult.MensagemErro = $"Campo 'Número do documento' vazio ";
+        }
     }
 }
