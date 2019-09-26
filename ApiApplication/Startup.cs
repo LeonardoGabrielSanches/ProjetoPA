@@ -1,4 +1,5 @@
 ﻿using Dominio.Interface.Repository;
+using InfraSql.Repositório;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +25,8 @@ namespace VendasAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IInterfaceGeral, ClienteRepositorio>();
-
-
-
-
+            services.AddSingleton<IInterfaceItem, ItemRepositorio>();
+                       
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSwaggerGen(c =>
