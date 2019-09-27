@@ -21,11 +21,14 @@ namespace InfraSql.Repositório
 
         public ValidateResult PostPedido(PedidoDeVenda pedido)
         {
+            ValidateResult validateResult = new ValidateResult();
             //Realizar Validaçoes com validateResult
 
             context.Pedido.Add(pedido);
 
             context.SaveChanges();
+
+            return validateResult;
         }
 
         public ValidateResult PutPedido(PedidoDeVenda pedido)

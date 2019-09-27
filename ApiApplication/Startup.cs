@@ -9,7 +9,6 @@ using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using VendasAPI.Infra.Repositório;
 
-//SE ESTIVER DANDO MERDA , PEGAR O PACOTE NUGET Swashbuckle
 namespace VendasAPI
 {
     public class Startup
