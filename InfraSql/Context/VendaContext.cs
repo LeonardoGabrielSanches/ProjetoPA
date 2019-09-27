@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
 using VendasAPI.Domínio.Entidades;
 
 //Caso esteja dando merda , instalar os pacotes Nuget: EntityFrameworkCore,EntityFrameworkCore.SqlServer,EntityFrameworkCore.Tools
@@ -15,6 +16,8 @@ namespace VendasAPI.Infra.Context
         public DbSet<Cliente> Cliente { get; set; }
 
         public DbSet<Item> Item { get; set; }
+
+        public DbSet<PedidoDeVenda> Pedido { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {

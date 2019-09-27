@@ -29,7 +29,7 @@ namespace VendasAPI.Controllers
 
         // POST: api/ControleVenda
         [HttpPost]
-        public IActionResult Post(Item itemAPI)
+        public IActionResult Post([FromForm]Item itemAPI)
         {
             var validateResult = item.PostItem(itemAPI);
 

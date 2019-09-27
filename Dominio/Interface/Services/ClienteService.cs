@@ -5,7 +5,7 @@ using VendasAPI.Domínio.Entidades;
 
 namespace Dominio.Interface.Services
 {
-    class ClienteService : Interface.Repository.IInterfaceGeral
+    public class ClienteService : Interface.Repository.IInterfaceGeral
     {
         private Repository.IInterfaceGeral repository;
 
