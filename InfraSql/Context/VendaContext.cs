@@ -30,6 +30,13 @@ namespace VendasAPI.Infra.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            ModelBuilder().Bu
+
+
+
+
+
         }
 
     }
