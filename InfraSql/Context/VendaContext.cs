@@ -1,6 +1,7 @@
 ﻿using Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using VendasAPI.Domínio.Entidades;
+using VendasAPI.Infra.Mapping;
 
 //Caso esteja dando merda , instalar os pacotes Nuget: EntityFrameworkCore,EntityFrameworkCore.SqlServer,EntityFrameworkCore.Tools
 namespace VendasAPI.Infra.Context
@@ -31,7 +32,11 @@ namespace VendasAPI.Infra.Context
         {
             base.OnModelCreating(builder);
 
-            ModelBuilder().Bu
+            builder.Entity<Cliente>(new ClienteMapping().Configure);
+
+            builder.Entity<Item>(new ItemMapping().Configure);
+
+            builder.Entity<PedidoDeVenda>(new PedidoDeVenda());
 
 
 
