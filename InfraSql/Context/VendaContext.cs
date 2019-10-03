@@ -39,6 +39,8 @@ namespace VendasAPI.Infra.Context
 
             builder.Entity<PedidoDeVenda>(new PedidoDeVendaMapping().Configure);
 
+            builder.Entity<Vendedor>(new VendedorMapping().Configure);
+
             builder.Entity<PedidoDeVenda>().HasMany(b => b.ListaDeItem);
 
             builder.Entity<PedidoDeVenda>().HasOne(b => b.Vendedor);
