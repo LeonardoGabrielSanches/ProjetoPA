@@ -7,11 +7,11 @@ namespace VendasAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VendaController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         private readonly IInterfaceGeral cliente;
 
-        public VendaController(IInterfaceGeral geral)
+        public ClienteController(IInterfaceGeral geral)
         {
             cliente = geral;
         }
