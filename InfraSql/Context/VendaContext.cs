@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using InfraSql.Mapping;
 using Microsoft.EntityFrameworkCore;
 using VendasAPI.Domínio.Entidades;
 using VendasAPI.Infra.Mapping;
@@ -36,12 +37,11 @@ namespace VendasAPI.Infra.Context
 
             builder.Entity<Item>(new ItemMapping().Configure);
 
-            builder.Entity<PedidoDeVenda>(new PedidoDeVenda());
+            builder.Entity<PedidoDeVenda>(new PedidoDeVendaMapping().Configure);
 
+            builder.Entity<PedidoDeVenda>().HasMany(b => b.ListaDeItem);
 
-
-
-
+            builder.Entity<PedidoDeVenda>().HasOne(b => b.Vendedor);
         }
 
     }
