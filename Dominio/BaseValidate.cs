@@ -1,5 +1,5 @@
 ﻿namespace VendasAPI.Domínio.Entidades
-{//tentativa merge
+{
     public class BaseValidate
     {
         public BaseValidate()
