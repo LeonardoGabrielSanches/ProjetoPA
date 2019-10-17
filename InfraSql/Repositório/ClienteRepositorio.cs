@@ -5,6 +5,7 @@ using VendasAPI.Domínio.Entidades;
 using VendasAPI.Infra.Context;
 
 namespace VendasAPI.Infra.Repositório
+//EASTER EGG
 {
     public class ClienteRepositorio : BaseValidate, IInterfaceGeral
     {
@@ -31,20 +32,37 @@ namespace VendasAPI.Infra.Repositório
         {
             try
             {
+                ValidateResult validateResult = new ValidateResult();
+
                 var existeNoBanco = EncontraCliente(documento);
                 if (existeNoBanco != null)
                 {
                     Result.MensagemErro = "Cliente já existente no banco de dados";
                     return Result;
                 }
-
+                //Tipo CNPJ 
                 var cliente = CrossCutting.APIExterna.APIReceitaCNPJ(documento);
+
+                if (cliente == null)
+                {
+                    Result.MensagemErro = "Cliente não encontrado";
+                    return Result;
+                }
+
+                validateResult = cliente.ValidacoesCNPJ();
+
+                if (!validateResult.Isvalid)
+                    return validateResult;
+
+               
+
+
 
                 context.Cliente.Add(cliente);
 
                 context.SaveChanges();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 throw;
             }
@@ -54,7 +72,18 @@ namespace VendasAPI.Infra.Repositório
 
         public ValidateResult PutCliente(Cliente cliente)
         {
-            var encontraClienteBanco = 
+            try
+            {
+                context.Cliente.Attach(cliente).State = EntityState.Modified;
+                context.Cliente.Update(cliente);
+                context.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+                Result.MensagemErro = $"{ex.Message}";
+            }
+
+            return Result;
         }
 
         public ValidateResult RemoveCliente(string documento)

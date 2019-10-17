@@ -7,11 +7,11 @@ namespace VendasAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VendaController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         private readonly IInterfaceGeral cliente;
 
-        public VendaController(IInterfaceGeral geral)
+        public ClienteController(IInterfaceGeral geral)
         {
             cliente = geral;
         }
@@ -40,8 +40,9 @@ namespace VendasAPI.Controllers
 
         // PUT: api/ControleVenda/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromHeader] Cliente cliente)
         {
+            
         }
 
         // DELETE: api/ApiWithActions/5
@@ -56,7 +57,7 @@ namespace VendasAPI.Controllers
 
                 return NoContent();
             }
-            catch (System.Exception ex )
+            catch (System.Exception ex)
             {
                 return BadRequest(ex);
             }

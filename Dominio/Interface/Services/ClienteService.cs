@@ -5,7 +5,7 @@ using VendasAPI.Domínio.Entidades;
 
 namespace Dominio.Interface.Services
 {
-    class ClienteService : Interface.Repository.IInterfaceGeral
+    public class ClienteService : Interface.Repository.IInterfaceGeral
     {
         private Repository.IInterfaceGeral repository;
 
@@ -18,7 +18,7 @@ namespace Dominio.Interface.Services
         {
             var cliente = repository.GetCliente(procura);
             return cliente;
-        }
+        }     
 
         public ValidateResult PostCliente(string documento)
         {
@@ -34,7 +34,7 @@ namespace Dominio.Interface.Services
 
         public ValidateResult RemoveCliente(string documento)
         {
-            var validateResult = repository.PostCliente(documento);
+            var validateResult = repository.RemoveCliente(documento);
             return validateResult; ;
         }
     }
