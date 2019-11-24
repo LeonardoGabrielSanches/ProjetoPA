@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjetoAplicadoIV.Properties {
+namespace frmSistema.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

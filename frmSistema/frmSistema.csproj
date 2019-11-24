@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{64273B64-2A88-4DAD-8D65-A7A9B15C6BDB}</ProjectGuid>
+    <ProjectGuid>{B65F5D03-6387-4A50-BB58-7B259CF626BE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ProjetoAplicadoIV</RootNamespace>
-    <AssemblyName>ProjetoAplicadoIV</AssemblyName>
+    <RootNamespace>frmSistema</RootNamespace>
+    <AssemblyName>frmSistema</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,10 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AddProdutoPedido.cs" />
-    <Compile Include="Classes\ApiRest.cs" />
-    <Compile Include="Classes\Pedido.cs" />
-    <Compile Include="Classes\Verificacoes.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +55,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.pt-BR.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,14 +85,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Facens\Pa\ProjetoPA\ApiApplication\ApiApplication.csproj">
-      <Project>{e948d89e-0b2f-4656-8b2b-7625143a5d07}</Project>
-      <Name>ApiApplication</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Facens\Pa\ProjetoPA\Dominio\Dominio.csproj">
-      <Project>{72fd74e1-6d7a-4046-893e-973e164c4007}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
+    <Folder Include="Classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
