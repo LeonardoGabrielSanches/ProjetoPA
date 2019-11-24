@@ -41,6 +41,8 @@ namespace InfraSql.Repositório
                     return validateResult;
                 }
 
+                //FAZER A CHAMADA DA FUNÇAO QUE SETA A MARGEM
+
                 context.Item.Add(item);
 
                 context.SaveChanges();
