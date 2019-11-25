@@ -40,7 +40,7 @@ namespace VendasAPI.Controllers
 
         // PUT: api/ControleVenda/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromHeader] Cliente cliente)
+        public void Put(int id, [FromBody] Cliente cliente)
         {
             
         }
