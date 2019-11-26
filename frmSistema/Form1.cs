@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio.Entidades;
+using VendasAPI.Domínio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -87,6 +89,7 @@ namespace frmSistema
             //Verificando se os campos de valor são realmente números
             if (isNumber(txtProduto_Custo.Text) && isNumber(txtProduto_Margem.Text))
             {
+                
                 //Se forem manda para o BD
                 int codigo = int.Parse(txtProduto_Codigo.Text);
                 string descricao = txtProduto_Descricao.Text;
@@ -95,8 +98,8 @@ namespace frmSistema
                 double margem = double.Parse(txtProduto_Margem.Text); //Em porcentagem
                 double venda = custo + (custo * margem / 100);
                 txtProduto_Venda.Text = "R$" + venda.ToString("F2");
-
-
+                
+                criei uma funcao nova
                 //Esses acima são as variáveis para mandar para o BD
                 MessageBox.Show("Sucesso!");
             }
@@ -162,6 +165,13 @@ namespace frmSistema
                     pnlProduto.Visible = false;
                     pnlPedido.Visible = false;
                     pnlMenu.Visible = true;
+                    PedidoDeVenda pedido = new PedidoDeVenda();
+                    Item item = new Item();
+                    item.Descricao = "bla";
+                    pedido.ListaDeItem.Add(item);
+                    Convert.ToDateTime(txt);
+                    Cliente cliente = new Cliente();
+                    cadastra(cliente);
                 }
             }
         }
