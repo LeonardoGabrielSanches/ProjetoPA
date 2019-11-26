@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using Dominio.Entidades;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 using VendasAPI.Domínio.Entidades;
@@ -10,20 +11,17 @@ namespace ProjetoAplicadoIV.Classes
 
         public static async void CadastraCliente(string cnpj)
         {
-            string cnpjSemPontuacao = Verificacoes.RefatoraCnpj(cnpj);
+            //string cnpjSemPontuacao = RefatoraCnpj(cnpj);
 
             HttpClient client = new HttpClient();
 
-            var respostaAPI = client.GetAsync("https://localhost:44308/api/Cliente?documento=" + cnpjSemPontuacao).Result;
+            var respostaAPI = client.GetAsync("https://localhost:44308/api/Cliente?documento=" + cnpj).Result;
 
             if (!respostaAPI.IsSuccessStatusCode)
-                MessageBox.Show("Não foi possível fazer o cadastro");
+                MessageBox.Show(respostaAPI.Content.ReadAsStringAsync().Result);
             else
                 MessageBox.Show("Cliente cadastrado com sucesso");
 
-            //var infosAPI = respostaAPI.Content.ReadAsStringAsync().Result;
-
-            //Cliente cliente = JsonConvert.DeserializeObject<Cliente>(infosAPI);
         }
 
         public static async void CadastraProduto(Item produto)//Necessita teste
@@ -41,7 +39,7 @@ namespace ProjetoAplicadoIV.Classes
                 MessageBox.Show(respostaApi.Content.ReadAsStringAsync().Result);
         }
 
-        public static async void CadastraPedido(Pedido pedido)//Mesma coisa objeto já feito
+        public static async void CadastraPedido(PedidoDeVenda pedido)//Mesma coisa objeto já feito
         {
             HttpClient client = new HttpClient();
 
