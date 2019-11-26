@@ -43,6 +43,7 @@
             this.lblMenu_HoraData = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlCliente = new System.Windows.Forms.Panel();
+            this.btnCliente_Limpar = new System.Windows.Forms.Button();
             this.label32 = new System.Windows.Forms.Label();
             this.btnCliente_Cadastrar = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -73,6 +74,7 @@
             this.btnCliente_Voltar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlProduto = new System.Windows.Forms.Panel();
+            this.btnProduto_Limpar = new System.Windows.Forms.Button();
             this.btnProduto_Cadastrar = new System.Windows.Forms.Button();
             this.txtProduto_Margem = new System.Windows.Forms.TextBox();
             this.txtProduto_Venda = new System.Windows.Forms.TextBox();
@@ -100,8 +102,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnCliente_Limpar = new System.Windows.Forms.Button();
-            this.btnProduto_Limpar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCliente.SuspendLayout();
@@ -230,6 +230,13 @@
             resources.ApplyResources(this.pnlCliente, "pnlCliente");
             this.pnlCliente.Name = "pnlCliente";
             this.pnlCliente.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnCliente_Limpar
+            // 
+            resources.ApplyResources(this.btnCliente_Limpar, "btnCliente_Limpar");
+            this.btnCliente_Limpar.Name = "btnCliente_Limpar";
+            this.btnCliente_Limpar.UseVisualStyleBackColor = true;
+            this.btnCliente_Limpar.Click += new System.EventHandler(this.btnCliente_Limpar_Click);
             // 
             // label32
             // 
@@ -402,6 +409,13 @@
             resources.ApplyResources(this.pnlProduto, "pnlProduto");
             this.pnlProduto.Name = "pnlProduto";
             // 
+            // btnProduto_Limpar
+            // 
+            resources.ApplyResources(this.btnProduto_Limpar, "btnProduto_Limpar");
+            this.btnProduto_Limpar.Name = "btnProduto_Limpar";
+            this.btnProduto_Limpar.UseVisualStyleBackColor = true;
+            this.btnProduto_Limpar.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnProduto_Cadastrar
             // 
             resources.ApplyResources(this.btnProduto_Cadastrar, "btnProduto_Cadastrar");
@@ -559,20 +573,6 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // btnCliente_Limpar
-            // 
-            resources.ApplyResources(this.btnCliente_Limpar, "btnCliente_Limpar");
-            this.btnCliente_Limpar.Name = "btnCliente_Limpar";
-            this.btnCliente_Limpar.UseVisualStyleBackColor = true;
-            this.btnCliente_Limpar.Click += new System.EventHandler(this.btnCliente_Limpar_Click);
-            // 
-            // btnProduto_Limpar
-            // 
-            resources.ApplyResources(this.btnProduto_Limpar, "btnProduto_Limpar");
-            this.btnProduto_Limpar.Name = "btnProduto_Limpar";
-            this.btnProduto_Limpar.UseVisualStyleBackColor = true;
-            this.btnProduto_Limpar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -580,10 +580,10 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblMenu_HoraData);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pnlProduto);
-            this.Controls.Add(this.pnlCliente);
             this.Controls.Add(this.pnlPedido);
             this.Controls.Add(this.pnlMenu);
+            this.Controls.Add(this.pnlProduto);
+            this.Controls.Add(this.pnlCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
