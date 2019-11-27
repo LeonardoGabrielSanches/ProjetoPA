@@ -16,33 +16,33 @@ namespace VendasAPI.Controllers
             item = iItem;
         }
 
-        // GET: api/ControleVenda/5
-        [HttpGet]
-        public IActionResult GetByNumeroEstoque(string descricao)
-        {
-            var itemBanco = item.GetItem(descricao);
-            if (itemBanco == null)
-                return NoContent();
-            else
-                return Ok(itemBanco);
-        }
+        //// GET: api/ControleVenda/5
+        //[HttpGet]
+        //public IActionResult GetByNumeroEstoque(string descricao)
+        //{
+        //    var itemBanco = item.GetItem(descricao);
+        //    if (itemBanco == null)
+        //        return NoContent();
+        //    else
+        //        return Ok(itemBanco);
+        //}
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var lista = item.GetAllItem();
-            if (lista == null)
-                return NoContent();
-            else
-                return Ok(lista);
-        }
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    var lista = item.GetAllItem();
+        //    if (lista == null)
+        //        return NoContent();
+        //    else
+        //        return Ok(lista);
+        //}
 
         [HttpGet]
         public IActionResult GetItemByID(int id)
         {
             var lista = item.GetItemByID(id);
             if (lista == null)
-                return NoContent();
+                return BadRequest("FOI");
             else
                 return Ok(lista);
         }
