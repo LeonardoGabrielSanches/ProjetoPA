@@ -11,20 +11,17 @@ namespace ProjetoAplicadoIV.Classes
 
         public static async void CadastraCliente(string cnpj)
         {
-            
+            //string cnpjSemPontuacao = RefatoraCnpj(cnpj);
 
             HttpClient client = new HttpClient();
 
             var respostaAPI = client.GetAsync("https://localhost:44308/api/Cliente?documento=" + cnpj).Result;
 
             if (!respostaAPI.IsSuccessStatusCode)
-                MessageBox.Show("Não foi possível fazer o cadastro");
+                MessageBox.Show(respostaAPI.Content.ReadAsStringAsync().Result);
             else
                 MessageBox.Show("Cliente cadastrado com sucesso");
 
-            //var infosAPI = respostaAPI.Content.ReadAsStringAsync().Result;
-
-            //Cliente cliente = JsonConvert.DeserializeObject<Cliente>(infosAPI);
         }
 
         public static async void CadastraProduto(Item produto)//Necessita teste
