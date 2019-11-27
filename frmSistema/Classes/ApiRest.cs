@@ -73,7 +73,7 @@ namespace ProjetoAplicadoIV.Classes
             return null;
         }
 
-        public static async Task<Item> RecuperaItem()
+        public static Item RecuperaItem(string descricao)
         {
             HttpClient client = new HttpClient();
 

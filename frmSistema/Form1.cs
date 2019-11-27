@@ -340,7 +340,7 @@ namespace frmSistema
                 {
                     MessageBox.Show("GRAVEI NO BANCO O PEDIDO FODASE");
                     txtPedido_PedidoID.Visible = true;
-                    txtPedido_PedidoID.Text = ;//Puxar o ID do pedido do banco aqui
+                    //txtPedido_PedidoID.Text = ;//Puxar o ID do pedido do banco aqui
                 }
             }
         }
@@ -364,7 +364,7 @@ namespace frmSistema
 
         private void btnConsulta_ListarTodos_Click(object sender, EventArgs e)
         {
-            listaProduto = ; //PUXAR DO BANCO DE DADOS E FAZER APARECER NO GridViewConsulta
+           // listaProduto = ; //PUXAR DO BANCO DE DADOS E FAZER APARECER NO GridViewConsulta
         }
 
         private void btnConsulta_Pesquisa_Click(object sender, EventArgs e)
@@ -373,7 +373,7 @@ namespace frmSistema
 
             
 
-            Item oItem = ;//Retornar do banco de dados e fazer aparecer no GridViewConsulta
+            Item oItem = ApiRest.RecuperaItem(descricao);//Retornar do banco de dados e fazer aparecer no GridViewConsulta
         }
     }
 }
