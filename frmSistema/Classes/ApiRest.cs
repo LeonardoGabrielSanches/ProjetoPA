@@ -20,7 +20,7 @@ namespace ProjetoAplicadoIV.Classes
 
             var httpContent = new StringContent(string.Empty, Encoding.UTF8, "application/json");
 
-            var respostaAPI = client.PostAsync("https://localhost:44308/api/Cliente?documento=" + cnpj,httpContent).Result;
+            var respostaAPI = client.PostAsync("https://localhost:5001/api/Cliente?documento=" + cnpj,httpContent).Result;
 
             if (!respostaAPI.IsSuccessStatusCode)
                 return string.Empty;
@@ -35,7 +35,7 @@ namespace ProjetoAplicadoIV.Classes
 
             var httpContent = new StringContent(produto.ToString(), Encoding.UTF8, "application/json");
 
-            var respostaApi = client.PostAsync("https://localhost:44308/api/Item", httpContent).Result;
+            var respostaApi = client.PostAsync("https://localhost:5001/api/Item", httpContent).Result;
 
             if (!respostaApi.IsSuccessStatusCode)
                 return string.Empty;
@@ -49,7 +49,7 @@ namespace ProjetoAplicadoIV.Classes
 
             var httpContent = new StringContent(pedido.ToString(), Encoding.UTF8, "application/json");
 
-            HttpResponseMessage respostaApi = client.PostAsync("https://localhost:44308/api/PedidoDeVenda", httpContent).Result;
+            HttpResponseMessage respostaApi = client.PostAsync("https://localhost:5001/api/PedidoDeVenda", httpContent).Result;
 
             if (!respostaApi.IsSuccessStatusCode)
                 MessageBox.Show("Não foi possível cadastrar o produto");
@@ -61,7 +61,7 @@ namespace ProjetoAplicadoIV.Classes
         {
             HttpClient client = new HttpClient();
 
-            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:44308/api/PedidoDeVenda").Result;
+            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:5001/api/PedidoDeVenda").Result;
 
             string listaApi = string.Empty;
 
@@ -77,7 +77,7 @@ namespace ProjetoAplicadoIV.Classes
         {
             HttpClient client = new HttpClient();
 
-            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:44308/api/PedidoDeVenda/descricao").Result;
+            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:5001/api/PedidoDeVenda/descricao").Result;
 
             if (!respostaApi.IsSuccessStatusCode)
                 MessageBox.Show("Não foi possível recuperar os dados");
