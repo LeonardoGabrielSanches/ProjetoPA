@@ -17,6 +17,7 @@ namespace InfraSql.Mapping
             builder.Property(b => b.DataDeEntrega).HasColumnName("DataDeEntrega").IsRequired().HasMaxLength(11);
             builder.Property(b => b.DataDoPedido).HasColumnName("DataDoPedido").IsRequired().HasMaxLength(11);
             builder.Property(b => b.Desconto).HasColumnName("Desconto").IsRequired().HasMaxLength(100);
+            builder.Property(b => b.FormaPagamento).HasColumnName("Forma de Pagamento").IsRequired().HasMaxLength(15);
             builder.Property(b => b.PrecoFinal).HasColumnName("PrecoFinal").IsRequired().HasMaxLength(100);
 
         }

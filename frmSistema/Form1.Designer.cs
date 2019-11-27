@@ -102,12 +102,52 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtPedido_CNPJ = new System.Windows.Forms.TextBox();
+            this.txtPedido_PedidoID = new System.Windows.Forms.TextBox();
+            this.txtPedido_Nome = new System.Windows.Forms.TextBox();
+            this.txtPedido_Data = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtPedido_Hora = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtPedido_ValorTotal = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.cmbPedido_Pagamento = new System.Windows.Forms.ComboBox();
+            this.gridViewPedido = new System.Windows.Forms.DataGridView();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtPedido_CodigoProduto = new System.Windows.Forms.TextBox();
+            this.btnPedido_IncluirItem = new System.Windows.Forms.Button();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consultarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlConsultarPedidos = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.GridViewConsulta = new System.Windows.Forms.DataGridView();
+            this.codigoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricaoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emestoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.margem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnConsulta_ListarTodos = new System.Windows.Forms.Button();
+            this.btnConsulta_Pesquisa = new System.Windows.Forms.Button();
+            this.txtConsulta_Descricao = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.btnPedido_Fechar = new System.Windows.Forms.Button();
+            this.txtPedido_Quantidade = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCliente.SuspendLayout();
             this.pnlProduto.SuspendLayout();
             this.pnlPedido.SuspendLayout();
             this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPedido)).BeginInit();
+            this.pnlConsultarPedidos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewConsulta)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -147,9 +187,11 @@
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrarProdutoToolStripMenuItem});
+            this.cadastrarProdutoToolStripMenuItem,
+            this.consultarProdutosToolStripMenuItem});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             resources.ApplyResources(this.produtoToolStripMenuItem, "produtoToolStripMenuItem");
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // cadastrarProdutoToolStripMenuItem
             // 
@@ -294,6 +336,7 @@
             // 
             resources.ApplyResources(this.txtCliente_CNPJ, "txtCliente_CNPJ");
             this.txtCliente_CNPJ.Name = "txtCliente_CNPJ";
+            this.txtCliente_CNPJ.TextChanged += new System.EventHandler(this.txtCliente_CNPJ_TextChanged);
             this.txtCliente_CNPJ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_CNPJ_KeyPress);
             // 
             // txtCliente_Nome
@@ -503,6 +546,24 @@
             // 
             // pnlPedido
             // 
+            this.pnlPedido.Controls.Add(this.label40);
+            this.pnlPedido.Controls.Add(this.txtPedido_Quantidade);
+            this.pnlPedido.Controls.Add(this.btnPedido_Fechar);
+            this.pnlPedido.Controls.Add(this.btnPedido_IncluirItem);
+            this.pnlPedido.Controls.Add(this.txtPedido_CodigoProduto);
+            this.pnlPedido.Controls.Add(this.label37);
+            this.pnlPedido.Controls.Add(this.gridViewPedido);
+            this.pnlPedido.Controls.Add(this.cmbPedido_Pagamento);
+            this.pnlPedido.Controls.Add(this.label36);
+            this.pnlPedido.Controls.Add(this.txtPedido_ValorTotal);
+            this.pnlPedido.Controls.Add(this.label35);
+            this.pnlPedido.Controls.Add(this.label34);
+            this.pnlPedido.Controls.Add(this.txtPedido_Hora);
+            this.pnlPedido.Controls.Add(this.label33);
+            this.pnlPedido.Controls.Add(this.txtPedido_Data);
+            this.pnlPedido.Controls.Add(this.txtPedido_Nome);
+            this.pnlPedido.Controls.Add(this.txtPedido_PedidoID);
+            this.pnlPedido.Controls.Add(this.txtPedido_CNPJ);
             this.pnlPedido.Controls.Add(this.label27);
             this.pnlPedido.Controls.Add(this.label26);
             this.pnlPedido.Controls.Add(this.label25);
@@ -573,6 +634,233 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
+            // txtPedido_CNPJ
+            // 
+            resources.ApplyResources(this.txtPedido_CNPJ, "txtPedido_CNPJ");
+            this.txtPedido_CNPJ.Name = "txtPedido_CNPJ";
+            // 
+            // txtPedido_PedidoID
+            // 
+            resources.ApplyResources(this.txtPedido_PedidoID, "txtPedido_PedidoID");
+            this.txtPedido_PedidoID.Name = "txtPedido_PedidoID";
+            this.txtPedido_PedidoID.ReadOnly = true;
+            // 
+            // txtPedido_Nome
+            // 
+            resources.ApplyResources(this.txtPedido_Nome, "txtPedido_Nome");
+            this.txtPedido_Nome.Name = "txtPedido_Nome";
+            this.txtPedido_Nome.ReadOnly = true;
+            // 
+            // txtPedido_Data
+            // 
+            resources.ApplyResources(this.txtPedido_Data, "txtPedido_Data");
+            this.txtPedido_Data.Name = "txtPedido_Data";
+            this.txtPedido_Data.ReadOnly = true;
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
+            // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            // 
+            // txtPedido_Hora
+            // 
+            resources.ApplyResources(this.txtPedido_Hora, "txtPedido_Hora");
+            this.txtPedido_Hora.Name = "txtPedido_Hora";
+            this.txtPedido_Hora.ReadOnly = true;
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // txtPedido_ValorTotal
+            // 
+            resources.ApplyResources(this.txtPedido_ValorTotal, "txtPedido_ValorTotal");
+            this.txtPedido_ValorTotal.Name = "txtPedido_ValorTotal";
+            this.txtPedido_ValorTotal.ReadOnly = true;
+            // 
+            // label36
+            // 
+            resources.ApplyResources(this.label36, "label36");
+            this.label36.Name = "label36";
+            // 
+            // cmbPedido_Pagamento
+            // 
+            this.cmbPedido_Pagamento.FormattingEnabled = true;
+            this.cmbPedido_Pagamento.Items.AddRange(new object[] {
+            resources.GetString("cmbPedido_Pagamento.Items"),
+            resources.GetString("cmbPedido_Pagamento.Items1"),
+            resources.GetString("cmbPedido_Pagamento.Items2")});
+            resources.ApplyResources(this.cmbPedido_Pagamento, "cmbPedido_Pagamento");
+            this.cmbPedido_Pagamento.Name = "cmbPedido_Pagamento";
+            // 
+            // gridViewPedido
+            // 
+            this.gridViewPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigo,
+            this.descricao,
+            this.quantidade,
+            this.unitario,
+            this.total});
+            resources.ApplyResources(this.gridViewPedido, "gridViewPedido");
+            this.gridViewPedido.Name = "gridViewPedido";
+            this.gridViewPedido.RowTemplate.Height = 28;
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // txtPedido_CodigoProduto
+            // 
+            resources.ApplyResources(this.txtPedido_CodigoProduto, "txtPedido_CodigoProduto");
+            this.txtPedido_CodigoProduto.Name = "txtPedido_CodigoProduto";
+            // 
+            // btnPedido_IncluirItem
+            // 
+            resources.ApplyResources(this.btnPedido_IncluirItem, "btnPedido_IncluirItem");
+            this.btnPedido_IncluirItem.Name = "btnPedido_IncluirItem";
+            this.btnPedido_IncluirItem.UseVisualStyleBackColor = true;
+            this.btnPedido_IncluirItem.Click += new System.EventHandler(this.btnPedido_IncluirItem_Click);
+            // 
+            // codigo
+            // 
+            resources.ApplyResources(this.codigo, "codigo");
+            this.codigo.Name = "codigo";
+            // 
+            // descricao
+            // 
+            resources.ApplyResources(this.descricao, "descricao");
+            this.descricao.Name = "descricao";
+            // 
+            // quantidade
+            // 
+            resources.ApplyResources(this.quantidade, "quantidade");
+            this.quantidade.Name = "quantidade";
+            // 
+            // unitario
+            // 
+            resources.ApplyResources(this.unitario, "unitario");
+            this.unitario.Name = "unitario";
+            // 
+            // total
+            // 
+            resources.ApplyResources(this.total, "total");
+            this.total.Name = "total";
+            // 
+            // consultarProdutosToolStripMenuItem
+            // 
+            this.consultarProdutosToolStripMenuItem.Name = "consultarProdutosToolStripMenuItem";
+            resources.ApplyResources(this.consultarProdutosToolStripMenuItem, "consultarProdutosToolStripMenuItem");
+            this.consultarProdutosToolStripMenuItem.Click += new System.EventHandler(this.consultarProdutosToolStripMenuItem_Click);
+            // 
+            // pnlConsultarPedidos
+            // 
+            this.pnlConsultarPedidos.Controls.Add(this.label39);
+            this.pnlConsultarPedidos.Controls.Add(this.txtConsulta_Descricao);
+            this.pnlConsultarPedidos.Controls.Add(this.btnConsulta_Pesquisa);
+            this.pnlConsultarPedidos.Controls.Add(this.btnConsulta_ListarTodos);
+            this.pnlConsultarPedidos.Controls.Add(this.GridViewConsulta);
+            this.pnlConsultarPedidos.Controls.Add(this.label38);
+            resources.ApplyResources(this.pnlConsultarPedidos, "pnlConsultarPedidos");
+            this.pnlConsultarPedidos.Name = "pnlConsultarPedidos";
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // GridViewConsulta
+            // 
+            this.GridViewConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridViewConsulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigoP,
+            this.descricaoP,
+            this.emestoque,
+            this.custo,
+            this.venda,
+            this.margem});
+            resources.ApplyResources(this.GridViewConsulta, "GridViewConsulta");
+            this.GridViewConsulta.Name = "GridViewConsulta";
+            this.GridViewConsulta.RowTemplate.Height = 28;
+            // 
+            // codigoP
+            // 
+            resources.ApplyResources(this.codigoP, "codigoP");
+            this.codigoP.Name = "codigoP";
+            // 
+            // descricaoP
+            // 
+            resources.ApplyResources(this.descricaoP, "descricaoP");
+            this.descricaoP.Name = "descricaoP";
+            // 
+            // emestoque
+            // 
+            resources.ApplyResources(this.emestoque, "emestoque");
+            this.emestoque.Name = "emestoque";
+            // 
+            // custo
+            // 
+            resources.ApplyResources(this.custo, "custo");
+            this.custo.Name = "custo";
+            // 
+            // venda
+            // 
+            resources.ApplyResources(this.venda, "venda");
+            this.venda.Name = "venda";
+            // 
+            // margem
+            // 
+            resources.ApplyResources(this.margem, "margem");
+            this.margem.Name = "margem";
+            // 
+            // btnConsulta_ListarTodos
+            // 
+            resources.ApplyResources(this.btnConsulta_ListarTodos, "btnConsulta_ListarTodos");
+            this.btnConsulta_ListarTodos.Name = "btnConsulta_ListarTodos";
+            this.btnConsulta_ListarTodos.UseVisualStyleBackColor = true;
+            this.btnConsulta_ListarTodos.Click += new System.EventHandler(this.btnConsulta_ListarTodos_Click);
+            // 
+            // btnConsulta_Pesquisa
+            // 
+            resources.ApplyResources(this.btnConsulta_Pesquisa, "btnConsulta_Pesquisa");
+            this.btnConsulta_Pesquisa.Name = "btnConsulta_Pesquisa";
+            this.btnConsulta_Pesquisa.UseVisualStyleBackColor = true;
+            this.btnConsulta_Pesquisa.Click += new System.EventHandler(this.btnConsulta_Pesquisa_Click);
+            // 
+            // txtConsulta_Descricao
+            // 
+            resources.ApplyResources(this.txtConsulta_Descricao, "txtConsulta_Descricao");
+            this.txtConsulta_Descricao.Name = "txtConsulta_Descricao";
+            // 
+            // label39
+            // 
+            resources.ApplyResources(this.label39, "label39");
+            this.label39.Name = "label39";
+            // 
+            // btnPedido_Fechar
+            // 
+            resources.ApplyResources(this.btnPedido_Fechar, "btnPedido_Fechar");
+            this.btnPedido_Fechar.Name = "btnPedido_Fechar";
+            this.btnPedido_Fechar.UseVisualStyleBackColor = true;
+            this.btnPedido_Fechar.Click += new System.EventHandler(this.btnPedido_Fechar_Click);
+            // 
+            // txtPedido_Quantidade
+            // 
+            resources.ApplyResources(this.txtPedido_Quantidade, "txtPedido_Quantidade");
+            this.txtPedido_Quantidade.Name = "txtPedido_Quantidade";
+            // 
+            // label40
+            // 
+            resources.ApplyResources(this.label40, "label40");
+            this.label40.Name = "label40";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -580,10 +868,11 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblMenu_HoraData);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pnlPedido);
-            this.Controls.Add(this.pnlMenu);
+            this.Controls.Add(this.pnlConsultarPedidos);
             this.Controls.Add(this.pnlProduto);
             this.Controls.Add(this.pnlCliente);
+            this.Controls.Add(this.pnlPedido);
+            this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -599,6 +888,10 @@
             this.pnlPedido.PerformLayout();
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPedido)).EndInit();
+            this.pnlConsultarPedidos.ResumeLayout(false);
+            this.pnlConsultarPedidos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewConsulta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -678,6 +971,43 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Button btnCliente_Limpar;
         private System.Windows.Forms.Button btnProduto_Limpar;
+        private System.Windows.Forms.TextBox txtPedido_ValorTotal;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txtPedido_Hora;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txtPedido_Data;
+        private System.Windows.Forms.TextBox txtPedido_Nome;
+        private System.Windows.Forms.TextBox txtPedido_PedidoID;
+        private System.Windows.Forms.TextBox txtPedido_CNPJ;
+        private System.Windows.Forms.Button btnPedido_IncluirItem;
+        private System.Windows.Forms.TextBox txtPedido_CodigoProduto;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.DataGridView gridViewPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.ComboBox cmbPedido_Pagamento;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ToolStripMenuItem consultarProdutosToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlConsultarPedidos;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox txtConsulta_Descricao;
+        private System.Windows.Forms.Button btnConsulta_Pesquisa;
+        private System.Windows.Forms.Button btnConsulta_ListarTodos;
+        private System.Windows.Forms.DataGridView GridViewConsulta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emestoque;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn venda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn margem;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button btnPedido_Fechar;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox txtPedido_Quantidade;
     }
 }
 

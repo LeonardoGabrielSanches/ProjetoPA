@@ -11,8 +11,23 @@ namespace Dominio.Entidades
         public double PrecoFinal { get; set; }
         public double Desconto { get; set; }
         public Vendedor Vendedor { get; set; }
+        public string FormaPagamento { get; set; }//Criei forma de pagamento
         public DateTime DataDoPedido { get; set; }
         public DateTime DataDeEntrega { get; set; }
 
+        public PedidoDeVenda()
+        {
+            PrecoFinal = 0;
+        }
+
+        public double GetPrecoFinal()
+        {
+            return PrecoFinal;
+        }
+
+        public void SetPrecoFinal(double preco)
+        {
+            PrecoFinal += preco;
+        }
     }
 }
