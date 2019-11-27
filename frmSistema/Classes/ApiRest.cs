@@ -12,7 +12,7 @@ namespace ProjetoAplicadoIV.Classes
     public class ApiRest
     {
 
-        public static async Task<string> CadastraCliente(string cnpj)
+        public static string CadastraCliente(string cnpj)
         {
             //string cnpjSemPontuacao = RefatoraCnpj(cnpj);
 
@@ -29,7 +29,7 @@ namespace ProjetoAplicadoIV.Classes
 
         }
 
-        public static async Task<string> CadastraProduto(Item produto)//Necessita teste
+        public static  string CadastraProduto(Item produto)//Necessita teste
         {
             HttpClient client = new HttpClient();
 
@@ -43,7 +43,7 @@ namespace ProjetoAplicadoIV.Classes
                 return respostaApi.Content.ReadAsStringAsync().Result;
         }
 
-        public static async void CadastraPedido(PedidoDeVenda pedido)//Mesma coisa objeto já feito
+        public static  void CadastraPedido(PedidoDeVenda pedido)//Mesma coisa objeto já feito
         {
             HttpClient client = new HttpClient();
 
@@ -57,7 +57,7 @@ namespace ProjetoAplicadoIV.Classes
                 MessageBox.Show(respostaApi.Content.ReadAsStringAsync().Result);
         }
 
-        public static async Task<List<Item>> RecuperaItens()
+        public static  List<Item> RecuperaItens()
         {
             HttpClient client = new HttpClient();
 

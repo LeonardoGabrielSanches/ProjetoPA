@@ -15,7 +15,7 @@ namespace InfraSql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -37,6 +37,11 @@ namespace InfraSql.Migrations
                     b.Property<double>("Desconto")
                         .HasColumnName("Desconto")
                         .HasMaxLength(100);
+
+                    b.Property<string>("FormaPagamento")
+                        .IsRequired()
+                        .HasColumnName("Forma de Pagamento")
+                        .HasMaxLength(15);
 
                     b.Property<double>("PrecoFinal")
                         .HasColumnName("PrecoFinal")
