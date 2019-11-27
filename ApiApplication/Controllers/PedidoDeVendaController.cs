@@ -30,7 +30,7 @@ namespace VendasAPI.Controllers
 
         // POST: api/ControleVenda
         [HttpPost]
-        public IActionResult Post([FromForm] PedidoDeVenda pedidoDeVenda)
+        public IActionResult Post([FromBody] PedidoDeVenda pedidoDeVenda)
         {
             var validateResult = pedido.PostPedido(pedidoDeVenda);          
                 if (!validateResult.Isvalid)
@@ -41,7 +41,7 @@ namespace VendasAPI.Controllers
 
         // PUT: api/ControleVenda/5
         [HttpPut("{id}")]
-        public IActionResult Put([FromForm] PedidoDeVenda pedidoDeVenda)
+        public IActionResult Put([FromBody] PedidoDeVenda pedidoDeVenda)
         {
             ValidateResult validateResult = pedido.PutPedido(pedidoDeVenda);
             if (!validateResult.Isvalid)

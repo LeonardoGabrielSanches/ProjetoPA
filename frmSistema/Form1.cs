@@ -20,6 +20,7 @@ namespace frmSistema
         private object listaItens;
         List<Item> listaProduto = new List<Item>();
         PedidoDeVenda auxPedido = new PedidoDeVenda();
+        List<GridView> gridViewAUX = new List<GridView>();
 
         public Form1()
         {
@@ -83,8 +84,11 @@ namespace frmSistema
             string hora = criacaoPedido.ToLongTimeString();
 
             auxPedido = new PedidoDeVenda();
+            var listaAuxGrid = new List<GridView>();
 
             auxPedido.DataDoPedido = criacaoPedido;
+
+            auxPedido.ListaDeItem = new List<Item>();
 
             txtPedido_Hora.Text = hora;
             txtPedido_Data.Text = data;
@@ -232,10 +236,31 @@ namespace frmSistema
                 auxPedido.PrecoFinal = novo.ValorVenda * quantidade;//Somando valor da venda
                 auxPedido.ListaDeItem.Add(novo);//ADICIONANDO NOVO ITEM NA LISTA
 
-                txtPedido_ValorTotal.Text = "R$" + auxPedido.GetPrecoFinal().ToString("F2");
+                var grid = new GridView(codigoproduto, novo.Descricao, quantidade, auxPedido.PrecoFinal);
+
+                gridViewAUX.Add(grid);
+
+                txtPedido_ValorTotal.Text = "R$" + auxPedido.PrecoFinal.ToString("F2");
+
+                gridViewPedido.DataSource = gridViewAUX;
             }
         }
 
+        public class GridView
+        {
+            int Codigo;
+            String Descricao;
+            int Quantidade;
+            double PrecoFinal;
+
+            public GridView(int codigo, string descricao, int quantidade, double precoFinal)
+            {
+                Codigo = codigo;
+                Descricao = descricao;
+                Quantidade = quantidade;
+                PrecoFinal = precoFinal;
+            }
+        }
 
         private void consultarProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -364,7 +389,7 @@ namespace frmSistema
 
         private void btnConsulta_ListarTodos_Click(object sender, EventArgs e)
         {
-           // listaProduto = ; //PUXAR DO BANCO DE DADOS E FAZER APARECER NO GridViewConsulta
+            // listaProduto = ; //PUXAR DO BANCO DE DADOS E FAZER APARECER NO GridViewConsulta
         }
 
         private void btnConsulta_Pesquisa_Click(object sender, EventArgs e)
