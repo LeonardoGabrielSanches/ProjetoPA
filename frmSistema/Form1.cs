@@ -139,11 +139,18 @@ namespace frmSistema
                 Item item = new Item(descricao, marca, custo, margem, venda);
 
                 //Cadastrando o item
-                ApiRest.CadastraProduto(item);
+                string codigoFinal = ApiRest.CadastraProduto(item).ToString();
 
-                txtProduto_Codigo.Text = ;//Passar o ID do produto gerado no banco
+                if (string.IsNullOrEmpty(codigoFinal))
+                {
+                    txtProduto_Codigo.Text = codigoFinal;//Passar o ID do produto gerado no banco
 
-                MessageBox.Show("Sucesso!");
+                    MessageBox.Show("Sucesso!");
+
+                }
+                else
+                    MessageBox.Show("Falha no salvamento");
+
             }
             else
                 MessageBox.Show("Verifique os campos de texto e valor!");
@@ -163,17 +170,23 @@ namespace frmSistema
             else
             {
                 //Fazer a mágica acontecer aqui! hehe
-                txtCliente_Nome.Enabled = true;
-                txtCliente_Nome.Visible = true;
-                txtCliente_Nome.Text = ; //RECEBER O NOME DO BANCO PARA MOSTRAR AQUI
+                string cliente = ApiRest.CadastraCliente(CNPJapenasNumeros).ToString();
+                if (string.IsNullOrEmpty(cliente))
+                {
+                    string[] clienteSeparado = cliente.Split(',');
+                    txtCliente_Nome.Enabled = true;
+                    txtCliente_Nome.Visible = true;
+                    txtCliente_Nome.Text = clienteSeparado[0];
 
-                txtCliente_Codigo.Enabled = true;
-                txtCliente_Codigo.Visible = true;
-                txtCliente_Codigo.Text = ;//Receber o codigo do cliente aqui
+                    txtCliente_Codigo.Enabled = true;
+                    txtCliente_Codigo.Visible = true;
+                    txtCliente_Codigo.Text = clienteSeparado[1];
 
-                ApiRest.CadastraCliente(CNPJapenasNumeros);
+                    MessageBox.Show("Cliente cadastrado com sucesso!");
+                }
+                else
+                    MessageBox.Show("Falha no cadastro");
 
-                MessageBox.Show("Cliente cadastrado com sucesso!");
             }
 
         }
@@ -358,7 +371,7 @@ namespace frmSistema
         {
             string descricao = txtConsulta_Descricao.Text;
 
-            //PESQUISAR NO BANCO DE DADOS A DESCRICAO E RETORNAR O PRODUTO
+            
 
             Item oItem = ;//Retornar do banco de dados e fazer aparecer no GridViewConsulta
         }

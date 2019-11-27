@@ -7,12 +7,14 @@ namespace Dominio.Interface.Repository
 {
     public interface IInterfaceItem
     { 
-        Item GetItem(int id);
+        Item GetItem(string descricao);
 
         ValidateResult PostItem(Item item);
 
         ValidateResult PutItem(Item item);
 
         ValidateResult RemoveItem(int id);
+
+        List<Item> GetAllItem();
     }
 }

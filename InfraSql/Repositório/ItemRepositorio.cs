@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dominio.Interface.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +12,26 @@ namespace InfraSql.Repositório
     {
         private VendaContext context = new VendaContext();
 
-        public Item GetItem(int id)
+        public List<Item> GetAllItem()
         {
             try
             {
-                var item = GetItemBanco(id);
+                return context.Item.AsNoTracking().Where(e => !string.IsNullOrEmpty(e.Descricao)).ToList();
+            }
+            catch
+            {
+                
+            }
+
+            return null;
+        }
+
+        public Item GetItem(string descricao)
+        {
+            try
+            {
+                var item = GetItemBanco(descricao);
+
                 return item;
             }
             catch (Exception ex)
@@ -33,7 +49,7 @@ namespace InfraSql.Repositório
             {
                 //Realizar validaçoes do item
 
-                var itemBanco = GetItemBanco(item.CodigoEstoque);
+                var itemBanco = GetItemBanco(item.Descricao);
 
                 if(itemBanco != null)
                 {
@@ -61,7 +77,7 @@ namespace InfraSql.Repositório
             ValidateResult validateResult = new ValidateResult();
             try
             {
-                var itemBanco = GetItemBanco(item.CodigoEstoque);
+                var itemBanco = GetItemBanco(item.Descricao);
                 if (itemBanco == null)
                 {
                     validateResult.MensagemErro = $"Item não cadastrado no banco";
@@ -85,7 +101,7 @@ namespace InfraSql.Repositório
             ValidateResult validateResult = new ValidateResult();
             try
             {
-                var itemBanco = GetItemBanco(id);
+                var itemBanco = GetItemBanco(id.ToString());
                 if (itemBanco == null)
                 {
                     validateResult.MensagemErro = $"Item não cadastrado no banco";
@@ -105,8 +121,8 @@ namespace InfraSql.Repositório
             }
         }
 
-        private Item GetItemBanco(int id)
-             => context.Item.AsNoTracking().Where(e => e.CodigoEstoque == id).FirstOrDefault();
+        private Item GetItemBanco(string descricao)
+             => context.Item.AsNoTracking().Where(e => e.Descricao == descricao).FirstOrDefault();
 
     }
 }

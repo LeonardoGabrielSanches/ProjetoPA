@@ -14,9 +14,9 @@ namespace Dominio.Interface.Services
             repository = _repository;
         }
 
-        public Item GetItem(int id)
+        public Item GetItem(string descricao)
         {
-            var item = repository.GetItem(id);
+            var item = repository.GetItem(descricao);
             return item;
         }
         public ValidateResult PostItem(Item item)
@@ -35,6 +35,12 @@ namespace Dominio.Interface.Services
         {
             var validateResult = repository.RemoveItem(id);
             return validateResult; ;
+        }
+
+        public List<Item> GetAllItem()
+        {
+            var lista = repository.GetAllItem();
+            return lista;
         }
     }
 }

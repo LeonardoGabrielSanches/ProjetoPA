@@ -18,13 +18,23 @@ namespace VendasAPI.Controllers
 
         // GET: api/ControleVenda/5
         [HttpGet]
-        public IActionResult GetByNumeroEstoque(int numeroEstoque)
+        public IActionResult GetByNumeroEstoque(string descricao)
         {
-            var itemBanco = item.GetItem(numeroEstoque);
+            var itemBanco = item.GetItem(descricao);
             if (itemBanco == null)
                 return NoContent();
             else
                 return Ok(itemBanco);
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var lista = item.GetAllItem();
+            if (lista == null)
+                return NoContent();
+            else
+                return Ok(lista);
         }
 
         // POST: api/ControleVenda
@@ -36,7 +46,8 @@ namespace VendasAPI.Controllers
             if (!validateResult.Isvalid)
                 return BadRequest(validateResult.MensagemErro);
 
-            return Ok("Item cadastrado com sucesso");
+            var itemBanco = item.GetItem(itemAPI.Descricao);
+            return Ok(itemBanco.CodigoEstoque.ToString());
         }
 
         // PUT: api/ControleVenda/5

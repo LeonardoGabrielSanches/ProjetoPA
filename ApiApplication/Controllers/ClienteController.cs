@@ -35,7 +35,8 @@ namespace VendasAPI.Controllers
             if (!validateResult.Isvalid)
                 return BadRequest(validateResult.MensagemErro);
 
-            return Ok("Cliente cadastrado com sucesso");
+            var clienteRetorno = cliente.GetCliente(documento);
+            return Ok($"{clienteRetorno.Nome.ToString()},{clienteRetorno.ClienteID.ToString()}");
         }
 
         // PUT: api/ControleVenda/5
