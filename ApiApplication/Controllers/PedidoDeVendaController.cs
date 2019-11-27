@@ -32,6 +32,7 @@ namespace VendasAPI.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] PedidoDeVenda pedidoDeVenda)
         {
+            return Ok("HAHA NE");
             var validateResult = pedido.PostPedido(pedidoDeVenda);          
                 if (!validateResult.Isvalid)
                 return BadRequest(validateResult.MensagemErro);

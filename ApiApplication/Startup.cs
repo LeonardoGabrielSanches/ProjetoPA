@@ -25,6 +25,7 @@ namespace VendasAPI
         {
             services.AddSingleton<IInterfaceGeral, ClienteRepositorio>();
             services.AddSingleton<IInterfaceItem, ItemRepositorio>();
+            services.AddSingleton<IInterfaceVenda, VendaRepositorio>();
                        
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
