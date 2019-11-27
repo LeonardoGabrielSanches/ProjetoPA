@@ -82,7 +82,7 @@ namespace frmSistema
             string data = criacaoPedido.ToShortDateString();
             string hora = criacaoPedido.ToLongTimeString();
 
-            auxPedido = null;
+            auxPedido = new PedidoDeVenda();
 
             auxPedido.DataDoPedido = criacaoPedido;
 
@@ -128,7 +128,7 @@ namespace frmSistema
             {
 
                 //Se forem manda para o BD
-                int codigo = int.Parse(txtProduto_Codigo.Text);
+                //int codigo = int.Parse(txtProduto_Codigo.Text);
                 string descricao = txtProduto_Descricao.Text;
                 string marca = txtProduto_Marca.Text;
                 double custo = double.Parse(txtProduto_Custo.Text);
@@ -171,7 +171,7 @@ namespace frmSistema
             {
                 //Fazer a mágica acontecer aqui! hehe
                 string cliente = ApiRest.CadastraCliente(CNPJapenasNumeros).ToString();
-                if (string.IsNullOrEmpty(cliente))
+                if (!string.IsNullOrEmpty(cliente))
                 {
                     string[] clienteSeparado = cliente.Split(',');
                     txtCliente_Nome.Enabled = true;
@@ -225,11 +225,11 @@ namespace frmSistema
                 int codigoproduto = int.Parse(txtPedido_CodigoProduto.Text);
                 int quantidade = int.Parse(txtPedido_Quantidade.Text);
                 //mandar para o banco de dados o codigoproduto e retornar um produto
-                Item novo = null;//Receber do banco de dados
+                Item novo = ApiRest.RecuperaItemID(codigoproduto);//Receber do banco de dados
                 auxPedido.FormaPagamento = "";//RECEBER FORMA DE PAGAMENTO DO BANCO DE DADOS
                 auxPedido.Vendedor = null;
                 auxPedido.Desconto = 0;
-                auxPedido.SetPrecoFinal(novo.ValorVenda * quantidade);//Somando valor da venda
+                auxPedido.PrecoFinal = novo.ValorVenda * quantidade;//Somando valor da venda
                 auxPedido.ListaDeItem.Add(novo);//ADICIONANDO NOVO ITEM NA LISTA
 
                 txtPedido_ValorTotal.Text = "R$" + auxPedido.GetPrecoFinal().ToString("F2");
@@ -370,8 +370,6 @@ namespace frmSistema
         private void btnConsulta_Pesquisa_Click(object sender, EventArgs e)
         {
             string descricao = txtConsulta_Descricao.Text;
-
-            
 
             Item oItem = ApiRest.RecuperaItem(descricao);//Retornar do banco de dados e fazer aparecer no GridViewConsulta
         }

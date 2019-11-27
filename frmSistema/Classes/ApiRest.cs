@@ -37,6 +37,8 @@ namespace ProjetoAplicadoIV.Classes
 
             var respostaApi = client.PostAsync("https://localhost:5001/api/Item", httpContent).Result;
 
+            string ajuda = respostaApi.Content.ReadAsStringAsync().Result;
+
             if (!respostaApi.IsSuccessStatusCode)
                 return string.Empty;
             else
@@ -77,7 +79,7 @@ namespace ProjetoAplicadoIV.Classes
         {
             HttpClient client = new HttpClient();
 
-            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:5001/api/PedidoDeVenda/descricao").Result;
+            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:5001/api/Item?=descricao" + descricao).Result;
 
             if (!respostaApi.IsSuccessStatusCode)
                 MessageBox.Show("Não foi possível recuperar os dados");
@@ -87,6 +89,24 @@ namespace ProjetoAplicadoIV.Classes
                 return item;
             }
             
+
+            return null;
+        }
+
+        public static Item RecuperaItemID(int id)
+        {
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage respostaApi = client.GetAsync("https://localhost:5001/api/Item?id=" + id).Result;
+
+            if (!respostaApi.IsSuccessStatusCode)
+                MessageBox.Show("Não foi possível recuperar os dados");
+            else
+            {
+                var item = JsonConvert.DeserializeObject<Item>(respostaApi.Content.ReadAsStringAsync().Result);
+                return item;
+            }
+
 
             return null;
         }

@@ -42,6 +42,18 @@ namespace InfraSql.Repositório
 
         }
 
+        public Item GetItemByID(int id)
+        {
+            try
+            {
+                var item = GetItemBancoID(id);
+                return item;
+            }
+            catch { }
+
+            return null;
+        }
+
         public ValidateResult PostItem(Item item)
         {
             ValidateResult validateResult = new ValidateResult();
@@ -123,6 +135,10 @@ namespace InfraSql.Repositório
 
         private Item GetItemBanco(string descricao)
              => context.Item.AsNoTracking().Where(e => e.Descricao == descricao).FirstOrDefault();
+
+        private Item GetItemBancoID(int id)
+             => context.Item.AsNoTracking().Where(e => e.ItemID == id).FirstOrDefault();
+
 
     }
 }

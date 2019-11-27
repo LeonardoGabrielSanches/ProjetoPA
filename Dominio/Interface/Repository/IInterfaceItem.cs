@@ -16,5 +16,7 @@ namespace Dominio.Interface.Repository
         ValidateResult RemoveItem(int id);
 
         List<Item> GetAllItem();
+
+        Item GetItemByID(int id);
     }
 }

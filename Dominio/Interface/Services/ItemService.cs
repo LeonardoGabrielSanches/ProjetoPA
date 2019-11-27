@@ -42,5 +42,10 @@ namespace Dominio.Interface.Services
             var lista = repository.GetAllItem();
             return lista;
         }
+
+        public Item GetItemByID(int id)
+        {
+            return repository.GetItemByID(id);
+        }
     }
 }

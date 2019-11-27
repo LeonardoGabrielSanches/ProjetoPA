@@ -37,9 +37,19 @@ namespace VendasAPI.Controllers
                 return Ok(lista);
         }
 
+        [HttpGet]
+        public IActionResult GetItemByID(int id)
+        {
+            var lista = item.GetItemByID(id);
+            if (lista == null)
+                return NoContent();
+            else
+                return Ok(lista);
+        }
+
         // POST: api/ControleVenda
         [HttpPost]
-        public IActionResult Post([FromForm]Item itemAPI)
+        public IActionResult Post([FromBody]Item itemAPI)
         {
             var validateResult = item.PostItem(itemAPI);
 
